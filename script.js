@@ -1,23 +1,43 @@
+const MAXGAME = 5;
 let humanScore = 0;
 let computerScore = 0;
 
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const buttons = [rock, paper, scissors];
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", () => {
+        switch (i) {
+            case 0:
+                placeholder("rock");
+                break;
+            case 1:
+                placeholder("paper");
+                break;
+            case 2:
+                placeholder("scissors");
+                break;
+        }
+    });
+}
 
-
-playGame();
+// playGame();
 
 //////////////////////////////////////////////////  Functions  /////////////////////////////////////////////////////
 
-function playGame() {
+function placeholder() {
+}
+
+function playGame(playerHand) {
     let scoreLimit = false;
-    while (scoreLimit === false) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-        console.log(`${humanScore} ${computerScore}`);
-        if (humanScore === 5 || computerScore === 5) {
-            scoreLimit = true;
-        }
-    }
+    const computerHand = getComputerChoice();
+    playRound(playerHand, computerHand);
+    console.log(`${humanScore} ${computerScore}`);
+    // if (humanScore === MAXGAME || computerScore === MAXGAME) {
+    //     scoreLimit = true;
+    // }
+
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -68,14 +88,14 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    const userChoice = prompt("rock / paper / scissors").toLowerCase();
-    switch (userChoice) {
-        case "rock":
-            return "rock";
-        case "paper":
-            return "paper";
-        case "scissors":
-            return "scissors";
-    }
-}
+// function getHumanChoice() {
+//     const userChoice = prompt("rock / paper / scissors").toLowerCase();
+//     switch (userChoice) {
+//         case "rock":
+//             return "rock";
+//         case "paper":
+//             return "paper";
+//         case "scissors":
+//             return "scissors";
+//     }
+// }
